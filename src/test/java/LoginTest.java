@@ -33,7 +33,6 @@ public class LoginTest {
     private static final String BROWSER_NAME_ENV_VARIABLE = "BROWSER_NAME";
     MainPage mainPage;
     LoginPage loginPage;
-    UserProfilePage userProfilePage;
 
     @Before
     public void setUp() {

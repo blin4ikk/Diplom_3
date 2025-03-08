@@ -1,10 +1,13 @@
+import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pageobject.ConstructorPage;
 import pageobject.MainPage;
 
@@ -30,28 +33,31 @@ public class ConstructorTest {
         @DisplayName("Проверка перехода в раздел Булки")
         public void checkBunsList(){
             driver.get(PAGE_URL);
-            mainPage.header.clickConstructorButton();
-            constructorPage.clickFillingsList();
-            constructorPage.clickBunList();
-            Assert.assertTrue("Должен быть отображен список булок", mainPage.constructorPage.visibilityBunsForSelect());
+            constructorPage.visibilityMenuBlock();
+            mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
+            constructorPage.clickFillingsList(); //нажимаем на заголовок "Начинки"
+            constructorPage.clickBunList(); //нажимаем на заголовок "Булки", чтобы проверить скролл к булкам
+            Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getBunsForSelect())); //проверяем, что список булок видим
         }
 
     @Test
     @DisplayName("Проверка перехода в раздел Соусы")
     public void checkSoucesList(){
         driver.get(PAGE_URL);
-        mainPage.header.clickConstructorButton();
-        constructorPage.clickSouceList();
-        Assert.assertTrue("Должен быть отображен список булок", mainPage.constructorPage.visibilitySoucesForSelect());
+        constructorPage.visibilityMenuBlock();
+        mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
+        constructorPage.clickSouceList();  //нажимаем на заголовок "Соусы"
+        Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getSoucesForSelect()));
     }
 
     @Test
     @DisplayName("Проверка перехода в раздел Начинки")
     public void checkFillingsList(){
         driver.get(PAGE_URL);
-        mainPage.header.clickConstructorButton();
-        constructorPage.clickFillingsList();
-        Assert.assertTrue("Должен быть отображен список булок", mainPage.constructorPage.visibilityFillingsForSelect());
+        constructorPage.visibilityMenuBlock();
+        mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
+        constructorPage.clickFillingsList(); //нажимаем на заголовок "Начинки"
+        Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getFillingsForSelect()));
     }
 
     @After

@@ -12,7 +12,6 @@ import pageobject.MainPage;
 import pageobject.RegistrationPage;
 
 public class RegistrationNegativeTest {
-    private final Gson gson = new Gson();
     private WebDriver driver;
     private static final String DEFAULT_BROWSER_NAME = "Chrome";
     private static final String PAGE_URL = "https://stellarburgers.nomoreparties.site/";

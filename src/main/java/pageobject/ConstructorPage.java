@@ -1,7 +1,6 @@
 package pageobject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,18 +38,29 @@ public class ConstructorPage {
     private By fillingsForSelect = By.xpath(".//h2[text()='Начинки']/following-sibling::ul[1]");
 
     //проверка видимости секции с булками
-    public Boolean visibilityBunsForSelect(){
-        return driver.findElement(bunsForSelect).isDisplayed();
+    public WebElement getBunsForSelect(){
+        return driver.findElement(bunsForSelect);
     }
 
     //проверка видимости секции с соусами
-    public Boolean visibilitySoucesForSelect(){
-        return driver.findElement(soucesForSelect).isDisplayed();
+    public WebElement getSoucesForSelect(){
+        return driver.findElement(soucesForSelect);
     }
 
     //проверка видимости секции с начинками
-    public Boolean visibilityFillingsForSelect(){
-        return driver.findElement(fillingsForSelect).isDisplayed();
+    public WebElement getFillingsForSelect(){
+        return driver.findElement(fillingsForSelect);
+    }
+
+    // Проверка, что элемент отображается в области видимости
+    public boolean isIngedientsInView(WebElement element) {
+        return new WebDriverWait(driver, Duration.ofSeconds(1)).until(driver -> {
+            Rectangle rect = element.getRect();
+            Dimension windowSize = driver.manage().window().getSize();
+
+            return rect.getX() < windowSize.getWidth() && rect.getX() + rect.getWidth() > 0
+                    && rect.getY() < windowSize.getHeight() && rect.getY() + rect.getHeight() > 0;
+        });
     }
 
     //клик по разделу "Булки"
@@ -74,4 +84,5 @@ public class ConstructorPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(menuBlock));
         return driver.findElement(menuBlock).isDisplayed();
     }
+
 }
