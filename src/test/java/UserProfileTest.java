@@ -94,7 +94,7 @@ public class UserProfileTest {
     @Step
     public void loginUser(String mail, String password){
         mainPage.header.clickAccountButton();
-        loginPage.visibleLoginForm();
+        loginPage.isVisibleLoginForm();;
         loginPage.fillAuthForm(mail, password);
     }
 

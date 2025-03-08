@@ -59,11 +59,11 @@ public class LoginPage {
         driver.findElement(registerButtonPage).click();
     }
 
-    //отображение формы логина
-    public void visibleLoginForm(){
-            new WebDriverWait(driver, Duration.ofSeconds(3))
-                    .until(ExpectedConditions.visibilityOfElementLocated(loginForm));
-            driver.findElement(loginForm).isDisplayed();
+    //проверяем, отобразилась ли форма логина
+    public boolean isVisibleLoginForm(){
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOfElementLocated(loginForm));
+        return driver.findElement(loginForm).isDisplayed();
     }
 
     public void fillAuthForm(String mail, String password){

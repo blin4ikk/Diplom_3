@@ -10,10 +10,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.LoginPage;
 import pageobject.MainPage;
 import pageobject.UserProfilePage;
 import toJson.User;
+
+import java.time.Duration;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
@@ -55,7 +59,7 @@ public class LogOutTest {
         userProfilePage.displayTextUserProfile(); //убедились, что мы в авторизованном личном кабинете
         userProfilePage.clickExitButton(); //тык на кнопку "Выход" в личном кабинете
         Assert.assertTrue("Должна отобразиться форма логина",
-                driver.findElement(By.className("Auth_login__3hAey")).isDisplayed()); //проверяем, что в личном кабинете требуется авторизация
+                loginPage.isVisibleLoginForm()); //проверяем, что в личном кабинете требуется авторизация
     }
 
     @After
@@ -74,7 +78,7 @@ public class LogOutTest {
     @Step
     public void loginUser(String mail, String password){
         mainPage.header.clickAccountButton();
-        loginPage.visibleLoginForm();
+        loginPage.isVisibleLoginForm();;
         loginPage.fillAuthForm(mail, password);
     }
 

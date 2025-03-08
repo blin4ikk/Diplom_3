@@ -52,7 +52,7 @@ public class LoginTest {
         driver.get(PAGE_URL);
         mainPage.header.clickAccountButton();
 
-        loginPage.visibleLoginForm();
+        loginPage.isVisibleLoginForm();
         loginPage.fillAuthForm(mail, password);
 
         new WebDriverWait(driver, Duration.ofSeconds(3))
@@ -68,7 +68,7 @@ public class LoginTest {
 
         mainPage.clickAuthButtonFromMainPage();
 
-        loginPage.visibleLoginForm();
+        loginPage.isVisibleLoginForm();
         loginPage.fillAuthForm(mail, password);
 
         new WebDriverWait(driver, Duration.ofSeconds(3))
@@ -86,7 +86,7 @@ public class LoginTest {
         loginPage.clickRegisterButtonPage();
         registrationPage.clickAuthButtonFromRegisterForm();
 
-        loginPage.visibleLoginForm();
+        loginPage.isVisibleLoginForm();
         loginPage.fillAuthForm(mail, password);
 
         new WebDriverWait(driver, Duration.ofSeconds(3))
@@ -105,7 +105,7 @@ public class LoginTest {
         loginPage.clickRegisterButtonPage();
         resetPasswordPage.clickAuthFromResetPasswordPage();
 
-        loginPage.visibleLoginForm();
+        loginPage.isVisibleLoginForm();
         loginPage.fillAuthForm(mail, password);
 
         new WebDriverWait(driver, Duration.ofSeconds(3))
