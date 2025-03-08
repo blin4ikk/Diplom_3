@@ -104,7 +104,7 @@ public class RegistrationPositiveTest {
                 .body("success", equalTo(true))
                 .extract().response();
            accessToken = response.body().path("accessToken");
-           System.out.println("Пользователь успешно залогинился: " + response.asString());
+           System.out.println("Пользователь успешно залогинился: " + response.body().path("user"));
     }
 
     @Step("Удаление пользователя")
