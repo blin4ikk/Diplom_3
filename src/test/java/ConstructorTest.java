@@ -1,13 +1,10 @@
-import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pageobject.ConstructorPage;
 import pageobject.MainPage;
 
@@ -35,7 +32,7 @@ public class ConstructorTest {
             driver.get(PAGE_URL);
             constructorPage.visibilityMenuBlock();
             mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
-            constructorPage.clickFillingsList(); //нажимаем на заголовок "Начинки"
+            constructorPage.scrollMenuConstructor(); //выполняем скролл в самый низ меню
             constructorPage.clickBunList(); //нажимаем на заголовок "Булки", чтобы проверить скролл к булкам
             Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getBunsForSelect())); //проверяем, что список булок видим
         }
@@ -46,7 +43,8 @@ public class ConstructorTest {
         driver.get(PAGE_URL);
         constructorPage.visibilityMenuBlock();
         mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
-        constructorPage.clickSouceList();  //нажимаем на заголовок "Соусы"
+        constructorPage.scrollMenuConstructor(); //выполняем скролл в самый низ меню
+        constructorPage.clickSouceList(); //нажимаем на заголовок "Соусы"
         Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getSoucesForSelect()));
     }
 

@@ -16,7 +16,7 @@ public class ConstructorPage {
         }
 
     //блок с меню в конструкторе
-    private By menuBlock = By.xpath(".//main[@class = 'App_componentContainer__2JC2W']");
+    private By menuBlock = By.className("BurgerIngredients_ingredients__menuContainer__Xu3Mo");
 
     //раздел с булками
     private By bunList = By.xpath(".//span[text() = 'Булки']");
@@ -26,7 +26,6 @@ public class ConstructorPage {
 
     //раздел с начинками
     private By fillingsList = By.xpath(".//span[text() = 'Начинки']");
-
 
     //секция с выбором булок
     private By bunsForSelect = By.xpath(".//h2[text()='Булки']/following-sibling::ul[1]");
@@ -83,6 +82,12 @@ public class ConstructorPage {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.visibilityOfElementLocated(menuBlock));
         return driver.findElement(menuBlock).isDisplayed();
+    }
+
+    //скролл в самый низ меню конструктора
+    public void scrollMenuConstructor(){
+        WebElement element = driver.findElement(menuBlock);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollTop = arguments[0].scrollHeight;", element);
     }
 
 }
