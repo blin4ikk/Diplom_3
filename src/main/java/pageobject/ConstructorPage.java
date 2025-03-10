@@ -19,13 +19,13 @@ public class ConstructorPage {
     private By menuBlock = By.className("BurgerIngredients_ingredients__menuContainer__Xu3Mo");
 
     //раздел с булками
-    private By bunList = By.xpath(".//span[text() = 'Булки']");
+    private By bunTab = By.xpath(".//span[text() = 'Булки']");
 
     //раздел с соусами
-    private By souceList = By.xpath(".//span[text() = 'Соусы']");
+    private By souceTab = By.xpath(".//span[text() = 'Соусы']");
 
     //раздел с начинками
-    private By fillingsList = By.xpath(".//span[text() = 'Начинки']");
+    private By fillingsTab = By.xpath(".//span[text() = 'Начинки']");
 
     //секция с выбором булок
     private By bunsForSelect = By.xpath(".//h2[text()='Булки']/following-sibling::ul[1]");
@@ -64,17 +64,17 @@ public class ConstructorPage {
 
     //клик по разделу "Булки"
     public void clickBunList(){
-        driver.findElement(bunList).click();
+        driver.findElement(bunTab).click();
     }
 
     //клик по разделу "Соусы"
     public void clickSouceList(){
-        driver.findElement(souceList).click();
+        driver.findElement(souceTab).click();
     }
 
     //клик по разделу "Начинки"
     public void clickFillingsList(){
-        driver.findElement(fillingsList).click();
+        driver.findElement(fillingsTab).click();
     }
 
     //показ меню

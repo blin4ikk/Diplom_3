@@ -14,9 +14,6 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    //кнопка перехода на страницу сброса пароля
-    private By resetPasswordButton = By.xpath(".//a[text() = 'Восстановить пароль']");
-
     //кнопка перехода на страницу регистрации
     private By registerButtonPage = By.xpath(".//a[text() = 'Зарегистрироваться']");
 
@@ -47,11 +44,6 @@ public class LoginPage {
     //клик по кнопке "Войти"
     public void clickLoginButton(){
         driver.findElement(loginButton).click();
-    }
-
-    //клик по кнопке перехода на страницу сброса пароля
-    public void clickResetPasswordButton(){
-        driver.findElement(resetPasswordButton).click();
     }
 
     //клик по кнопке перехода на страницу регистрации
