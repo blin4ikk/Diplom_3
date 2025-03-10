@@ -33,8 +33,8 @@ public class ConstructorTest {
             constructorPage.visibilityMenuBlock();
             mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
             constructorPage.scrollMenuConstructor(); //выполняем скролл в самый низ меню
-            constructorPage.clickBunList(); //нажимаем на заголовок "Булки", чтобы проверить скролл к булкам
-            Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getBunsForSelect())); //проверяем, что список булок видим
+            constructorPage.clickBunTab(); //нажимаем на заголовок "Булки", чтобы проверить скролл к булкам
+            Assert.assertTrue("Класс 'tab_tab_type_current__2BEPc' не добавлен после клика", constructorPage.checkClassAfterFocusBunsTab());
         }
 
     @Test
@@ -44,8 +44,8 @@ public class ConstructorTest {
         constructorPage.visibilityMenuBlock();
         mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
         constructorPage.scrollMenuConstructor(); //выполняем скролл в самый низ меню
-        constructorPage.clickSouceList(); //нажимаем на заголовок "Соусы"
-        Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getSoucesForSelect()));
+        constructorPage.clickSouceTab();
+        Assert.assertTrue("Класс 'tab_tab_type_current__2BEPc' не добавлен после клика", constructorPage.checkClassAfterSouceBunsTab());
     }
 
     @Test
@@ -54,8 +54,8 @@ public class ConstructorTest {
         driver.get(PAGE_URL);
         constructorPage.visibilityMenuBlock();
         mainPage.header.clickConstructorButton(); //нажимаем на конструктор в шапке
-        constructorPage.clickFillingsList(); //нажимаем на заголовок "Начинки"
-        Assert.assertTrue("Должен быть отображен список булок", constructorPage.isIngedientsInView(constructorPage.getFillingsForSelect()));
+        constructorPage.clickFillingsTab(); //нажимаем на заголовок "Начинки"
+        Assert.assertTrue("Класс 'tab_tab_type_current__2BEPc' не добавлен после клика", constructorPage.checkClassAfterFillingsBunsTab());
     }
 
     @After
